@@ -1,0 +1,10 @@
+﻿# ignore rules
+.env
+__pycache__/
+*.pyc
+venv/
+node_modules/
+server_log.txt
+backend/uploads/
+backend/debug_lines.png
+backend/test_gemini.py

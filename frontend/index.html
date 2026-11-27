@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PenPersona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- background atmosphere -->
+  <div class="bg-blob bg-blob--1"></div>
+  <div class="bg-blob bg-blob--2"></div>
+
+  <div class="shell">
+
+    <nav class="nav">
+      <div class="nav__brand">PenPersona</div>
+      <ul class="nav__links">
+        <li><a href="#" class="is-active" data-nav="home">Home
+          <svg class="underline" viewBox="0 0 60 8"><path d="M2,5 Q30,1 58,5"/></svg>
+        </a></li>
+        <li><a href="#" data-nav="about">About</a></li>
+        <li><a href="#" data-nav="how">How It Works</a></li>
+      </ul>
+      <button class="btn btn--primary" data-action="get-started">Get Started</button>
+    </nav>
+
+    <!-- ============================================
+         HOME VIEW
+         ============================================ -->
+    <section class="view is-visible" id="view-home">
+
+      <div class="hero">
+        <div>
+          <p class="eyebrow-scribble">Your handwriting holds more than you think...</p>
+          <h1>Decode the story in your handwriting.</h1>
+          <p class="lede">Upload your handwriting photo and discover the unique personality behind your pen strokes.</p>
+        </div>
+        <div class="hero__art">
+          <svg viewBox="0 0 260 220" class="pen-draw">
+            <rect x="60" y="30" width="120" height="150" rx="4" fill="none" stroke="#2D3536" stroke-width="2.5" transform="rotate(-4 120 105)"/>
+            <path d="M90,80 Q140,72 150,88" fill="none" stroke="#697C70" stroke-width="2" stroke-linecap="round" transform="rotate(-4 120 105)"/>
+            <path d="M90,105 Q150,98 158,112" fill="none" stroke="#697C70" stroke-width="2" stroke-linecap="round" transform="rotate(-4 120 105)"/>
+            <path d="M90,130 Q130,124 140,136" fill="none" stroke="#697C70" stroke-width="2" stroke-linecap="round" transform="rotate(-4 120 105)"/>
+            <path d="M175,150 L215,190 M215,150 L175,190" fill="none" stroke="#2D3536" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <form class="upload-card" id="upload-card">
+        <div id="upload-empty">
+          <div class="upload-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D3536" stroke-width="2" stroke-linecap="round"><path d="M12 16V4M12 4L7 9M12 4l5 5"/><path d="M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+          </div>
+          <h3>Drop your handwriting photo here</h3>
+          <p class="hint">PNG, JPG or WEBP</p>
+          <label class="btn btn--ghost" for="file-input">Browse files</label>
+          <div class="divider">or</div>
+        </div>
+
+        <div id="upload-filled" class="hidden">
+          <img id="preview-img" class="preview-thumb" alt="Your uploaded handwriting" />
+          <p class="upload-filename" id="filename-label"></p>
+        </div>
+
+        <input type="file" id="file-input" accept=".jpg,.jpeg,.png,.webp" />
+        <button type="submit" class="btn btn--primary" id="analyze-btn" disabled>Analyze handwriting →</button>
+        <div class="err-banner" id="upload-error"></div>
+      </form>
+
+      <div class="feature-strip">
+        <div class="feature-strip__count">4 <span class="label">FEATURES ANALYZED</span></div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 3 L12 21 M12 3 L9 6 M12 3 L15 6" transform="rotate(15 12 12)"/></svg></div>
+          <div><h4>Slant</h4><p>Direction of your writing</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M6 4v16M18 4v16M6 12h12"/></svg></div>
+          <div><h4>Spacing</h4><p>Gap between letters &amp; words</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 18h4l8-14 4 14"/></svg></div>
+          <div><h4>Size</h4><p>Letter size &amp; proportions</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></div>
+          <div><h4>Baseline</h4><p>Alignment of your writing</p></div>
+        </div>
+      </div>
+
+      <p class="tagline">Same ink. Different stories.</p>
+    </section>
+
+    <!-- ============================================
+         LOADING VIEW
+         ============================================ -->
+    <section class="view" id="view-loading">
+      <div class="loading">
+        <svg class="pen-wiggle" viewBox="0 0 100 100"><path d="M10,50 Q30,20 50,50 T90,50" /></svg>
+        <p id="loading-text">Reading your handwriting...</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         RESULTS VIEW
+         ============================================ -->
+    <section class="view" id="view-results">
+      <p class="results-eyebrow">Here's what your handwriting revealed...</p>
+      <h2 class="results-heading">Your handwriting has something to say.</h2>
+      <div class="trait-pill"><span id="trait-word">trait.</span></div>
+
+      <div class="result-hero" id="result-hero">
+        <div class="read-card" id="read-text"></div>
+        <div class="doodle-card">
+          <div id="doodle-slot"></div>
+          <p class="doodle-caption" id="doodle-caption"></p>
+        </div>
+      </div>
+
+      <h3 class="breakdown-heading">The details behind your reading</h3>
+      <div class="breakdown-grid">
+        <div class="breakdown-card">
+          <h4>Feature Analysis</h4>
+          <div id="feature-rows"></div>
+        </div>
+        <div class="breakdown-card">
+          <h4>Personality Traits</h4>
+          <div id="trait-rows"></div>
+        </div>
+      </div>
+
+      <div class="results-footer">
+        <button class="btn btn--primary" id="analyze-another">Analyze another ↻</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/doodles.js"></script>
+  <script src="js/interpret.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
